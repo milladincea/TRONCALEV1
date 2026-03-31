@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diseño y visualización de información</title>
+  <title>Warming Stripes — Diseño y visualización de información</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,700;1,6..72,400&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -66,6 +66,13 @@
       line-height: 1.1;
       color: var(--dark);
     }
+    .deck {
+      font-size: clamp(15px, 2vw, 18px);
+      font-style: italic;
+      color: var(--mid);
+      margin-top: 16px;
+      line-height: 1.5;
+    }
 
     /* ARTICLE */
     article { padding: 28px 0 40px; border-top: 1px solid var(--border); }
@@ -77,6 +84,19 @@
       color: var(--red);
       margin-bottom: 8px;
     }
+
+    h3 {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin: 28px 0 10px;
+      border-left: 3px solid var(--red);
+      padding-left: 10px;
+    }
+
     .byline {
       font-family: var(--sans);
       font-size: 13px;
@@ -92,15 +112,136 @@
       font-weight: 400;
     }
 
-    /* FIGURE */
-    figure { margin: 28px -100px 24px; }
-    figure img { width: 100%; display: block; border: 1px solid var(--border); }
+    /* STRIPES VISUALIZATION */
+    .stripes-figure {
+      margin: 32px -60px 28px;
+    }
+
+    .stripes-bar {
+      display: flex;
+      height: 80px;
+      width: 100%;
+      border: 1px solid var(--border);
+    }
+
+    .stripes-bar span {
+      flex: 1;
+      display: block;
+    }
+
     figcaption {
       font-family: var(--sans);
       font-size: 12px;
       color: var(--light);
       margin-top: 6px;
       text-align: center;
+    }
+
+    .stripes-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--light);
+      margin-top: 4px;
+      padding: 0 1px;
+    }
+
+    /* BULLET LIST */
+    .styled-list {
+      list-style: none;
+      margin: 0 0 18px 0;
+      padding: 0;
+    }
+    .styled-list li {
+      font-size: 16px;
+      line-height: 1.65;
+      padding: 10px 0 10px 20px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .styled-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-weight: 700;
+    }
+    .styled-list li strong {
+      font-family: var(--sans);
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* PULL QUOTE */
+    blockquote {
+      margin: 32px 0;
+      padding: 0 0 0 24px;
+      border-left: 4px solid var(--red);
+    }
+    blockquote p {
+      font-size: 20px;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    blockquote cite {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--light);
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* DIKW BOX */
+    .dikw-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 28px 0;
+    }
+    .dikw-cell {
+      background: #fff;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .dikw-letter {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--red);
+      display: block;
+      line-height: 1;
+    }
+    .dikw-word {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      display: block;
+      margin: 4px 0 8px;
+    }
+    .dikw-desc {
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--dark);
+    }
+
+    /* SECTION RULE */
+    .section-rule {
+      border: none;
+      border-top: 2px solid var(--dark);
+      margin: 36px 0 28px;
     }
 
     /* FOOTER */
@@ -121,22 +262,107 @@
 
     <header>
       <p class="kicker">Diseño y visualización de información</p>
-      <h1>Rayas<br>de Calor</h1>
+      <h1>Warming Stripes:<br>La Síntesis Cromática<br>como Dispositivo de<br>Conciencia Climática</h1>
+      <p class="deck">Una aproximación desde el diseño de información a la visualización de anomalías térmicas globales.</p>
     </header>
 
     <article>
-      <h2>Una pequeña bajada</h2>
-      <p class="byline">Por <strong>Angelina Caviedes</strong>, <strong>Millaray Dinamarca</strong>, <strong>Antonia Mardones</strong>, <strong>María J. Quinteros</strong> y <strong>Antonia Solar</strong></p>
 
-      <p>The escalating U.S.–Israeli war with Iran and Tehran's retaliation against Gulf neighbours have severely disrupted Middle Eastern energy infrastructure and global oil and gas flows. Israeli strikes on Iran's South Pars gas field and the Asaluyeh processing hub on March 18 triggered a wave of retaliatory attacks across the Gulf that hit refineries, gas plants and export terminals in Saudi Arabia, Kuwait, Qatar, the United Arab Emirates and Bahrain.</p>
+      <!-- INTRODUCCIÓN -->
+      <h2>Warming Stripes</h2>
+      <p class="byline">Análisis de la pieza de <strong>Ed Hawkins</strong> por <strong>Angelina Caviedes</strong>, <strong>Millaray Dinamarca</strong>, <strong>Antonia Mardones</strong>, <strong>María J. Quinteros</strong> y <strong>Antonia Solar</strong></p>
 
-      <figure>
-        <img src="foto.webp" alt="Map of affected energy infrastructure">
-        <figcaption>Source:  University of Reading</figcaption>
+      <p> Mediante un proceso de abstracción, Hawkins (2018) transforma conjuntos de datos geofísicos complejos en una narrativa visual mínima basada en el color, logrando una síntesis que trasciende la barrera del lenguaje técnico para instalarse en la esfera de la percepción intuitiva.</p>
+
+        <!-- STRIPES VISUALIZATION -->
+      <figure class="stripes-figure">
+        <img src="foto.webp" alt="Warming Stripes — anomalías de temperatura global 1850–2024">
+        <figcaption>Cada franja representa la anomalía de temperatura media global anual respecto al período de referencia 1985–2000. Fuente: University of Reading / Ed Hawkins.</figcaption>
       </figure>
 
-      <p>Multiple key facilities have been damaged or shut. Drone and missile attacks struck refineries and LNG plants in Saudi Arabia, Kuwait and Qatar, while missile debris forced the shutdown of the UAE's massive Habshan gas complex and repeated attacks targeted its Fujairah export terminal.</p>
-      <p>The sites now under threat collectively account for a significant portion of global reserves, underscoring the scale of the shock to energy markets and consumers.</p>
+      <hr class="section-rule">
+      
+      
+      <!-- CONTEXTO -->
+      <h2>Contexto y Problemática</h2>
+
+      <p>El diseño de esta pieza resuelve la dificultad de comunicar el calentamiento global a audiencias no especializadas a la vez que responde a las interrogantes fundamentales del fenómeno: <em>qué</em> (anomalías de temperatura), <em>quién</em> (la biosfera global), <em>dónde</em> (escalas regionales y globales) y <em>cuándo</em> (desde 1850 hasta la actualidad).</p>
+
+      <hr class="section-rule">
+
+      <!-- ANÁLISIS DIKW -->
+      <h2>Análisis de la Información</h2>
+      <h3>Entre la Estructura y la Construcción Social</h3>
+
+      <p>Bajo el modelo DIKW (Data, Information, Knowledge, Wisdom), esta pieza opera más allá de la simple transmisión de datos:</p>
+
+      <div class="dikw-grid">
+        <div class="dikw-cell">
+          <span class="dikw-letter">D</span>
+          <span class="dikw-word">Data</span>
+          <span class="dikw-desc">Registros térmicos históricos</span>
+        </div>
+        <div class="dikw-cell">
+          <span class="dikw-letter">I</span>
+          <span class="dikw-word">Information</span>
+          <span class="dikw-desc">Anomalías codificadas en color</span>
+        </div>
+        <div class="dikw-cell">
+          <span class="dikw-letter">K</span>
+          <span class="dikw-word">Knowledge</span>
+          <span class="dikw-desc">Comprensión de la tendencia global</span>
+        </div>
+        <div class="dikw-cell">
+          <span class="dikw-letter">W</span>
+          <span class="dikw-word">Wisdom</span>
+          <span class="dikw-desc">Conciencia colectiva y acción climática</span>
+        </div>
+      </div>
+
+      <p>Si bien son la base, la visualización prescinde de ser una Estructura de Interacción técnica —al eliminar ejes, escalas y valores numéricos— para situarse como una Construcción Social de la información.</p>
+
+      <blockquote>
+        <p>El valor de las <em>Warming Stripes</em> reside en su capacidad de producir sentido y generar conciencia colectiva.</p>
+        
+      </blockquote>
+
+      <p>Es una representación que prioriza un mensaje claro y dirigido por sobre la exploración de datos exhaustiva, donde la transición de azules a rojos sintetiza el avance del calentamiento global.</p>
+
+      <hr class="section-rule">
+
+      <!-- ANÁLISIS TÉCNICO -->
+      <h2>Análisis Técnico y Ético-Legal</h2>
+
+      <p>Desde una perspectiva técnica, la visualización opera como un gráfico de barras de color donde cada franja representa la desviación anual de temperatura respecto a un período de referencia.</p>
+      <p>En cuanto al tratamiento de datos, la pieza se ajusta a los estándares de seguridad y privacidad:</p>
+      
+      <ul class="styled-list">
+        <li>
+          <strong>Datos sensibles</strong>
+          No utiliza ni compromete datos personales según la Ley 19.628, ya que su fuente son registros geofísicos de acceso público y carácter impersonal.
+        </li>
+        <li>
+          <strong>Metadatos y sesgos</strong>
+          La síntesis visual favorece la comunicación masiva, pero implica la omisión de zonas geográficas con escasa cobertura histórica de estaciones meteorológicas.</li>
+      </ul>
+
+      <hr class="section-rule">
+
+      <!-- LEGADO -->
+      <h2>Legado y Aplicaciones Contemporáneas</h2>
+
+      <p> Su legado reside en la <strong>simplificación extrema</strong>, permitiendo una comprensión inmediata e intuitiva de fenómenos de gran escala. Esta lógica visual ha sido adaptada en diversos contextos para visibilizar, por ejemplo, una crisis sistémica:</p>
+
+      <ul class="styled-list">
+     <li>
+          <strong>Biodiversity Stripes (2022)</strong>
+          Utiliza la misma gramática visual para representar la pérdida de biodiversidad global.
+          <img src="bio.webp" alt="Biodiversity Stripes 2022" style="width:100%; height:180px; object-fit:cover; display:block; margin-top:10px; border:1px solid #ddd;">
+        <span style="display:block; font-family:'Roboto Condensed', Arial, sans-serif; font-size:12px; color:#999; margin-top:6px; line-height:1.5;">Cada franja representa la vida silvestre y su declive se traduce en una pérdida de vitalidad y colorido: el verde se torna gris. Fuente: Franjas Biológicas Globales 1970–2016 — Datos: Índice Planeta Vivo <a href="http://stats.livingplanetindex.org/" style="color:#999;">http://stats.livingplanetindex.org/</a></span>
+        </li>
+  
+      </ul>
+
     </article>
 
   </div>
